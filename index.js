@@ -81,9 +81,9 @@ csv.parseFile('mempool.csv', {headers: false, skipLines: 1})
         
         // log the net fees collected and weight processed
         console.log(`\nIn block.txt:`);
-        console.log(`\ttotal fees collected: ${totalFees}`);
-        console.log(`\ttotal weight processed: ${currWt}`);
-        console.log(`\ttotal entries written: ${entriesWritten}`);
+        console.log(`\ttotal fees collected (in satoshis): ${totalFees.toLocaleString()}`);
+        console.log(`\ttotal weight processed: ${currWt.toLocaleString()}`);
+        console.log(`\ttotal entries written: ${entriesWritten.toLocaleString()}`);
 
         // close the stream
         writeStream.end();
