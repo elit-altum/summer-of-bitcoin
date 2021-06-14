@@ -1,4 +1,4 @@
-# Summer of Bitcoin Solution Challenge 🚀☀️
+# Summer of Bitcoin Challenge 🚀☀️
 
 This is my submission for the summer of bitcoin challenge 2021, built using NodeJS.
 
