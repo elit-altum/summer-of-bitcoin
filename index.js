@@ -35,7 +35,7 @@ csv.parseFile('mempool.csv', {headers: false, skipLines: 1})
         let writeStream = fs.createWriteStream('block.txt');
         
         // the current weight processed and the total fee collected
-        let currWt = 0, totalFees = 0;
+        let currWt = 0, totalFees = 0, entriesWritten = 0;
 
         // store all the txn_ids already processed
         let processed = {};
@@ -69,18 +69,21 @@ csv.parseFile('mempool.csv', {headers: false, skipLines: 1})
             // store this txn as processed
             processed[row[1]] = 1;
 
-            // increase the collected fee and weight
+            // increase the collected fee, weight and entries written
             currWt += row[3];
             totalFees += row[2];
+            entriesWritten += 1;
             
             // output the processed txn_id to block file
-            writeStream.write(`${row[1]} \n`);
+            writeStream.write(`${row[1]}\n`);
             
         });
         
         // log the net fees collected and weight processed
-        console.log(`total fees collected: ${totalFees}`);
-        console.log(`total weight processed: ${currWt}`);
+        console.log(`\nIn block.txt:`);
+        console.log(`\ttotal fees collected: ${totalFees}`);
+        console.log(`\ttotal weight processed: ${currWt}`);
+        console.log(`\ttotal entries written: ${entriesWritten}`);
 
         // close the stream
         writeStream.end();
